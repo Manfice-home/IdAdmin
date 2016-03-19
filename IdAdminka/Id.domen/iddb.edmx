@@ -1,0 +1,1408 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="iddataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Banks">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Korr" Type="nvarchar(max)" />
+          <Property Name="Bik" Type="nvarchar(max)" />
+          <Property Name="DetailsOf_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="Brands">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ShortName" Type="nvarchar(max)" />
+          <Property Name="FullName" Type="nvarchar(max)" />
+          <Property Name="Vendor_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="Curencies">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ReqDate" Type="datetime" Nullable="false" />
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="Stitle" Type="nvarchar(max)" />
+          <Property Name="CurValue" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Currencies">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="nvarchar(max)" />
+          <Property Name="StringCode" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Customers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="Adress" Type="nvarchar(max)" />
+          <Property Name="Details_Id" Type="int" />
+          <Property Name="Photo_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="Details">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Inn" Type="nvarchar(max)" />
+          <Property Name="Kpp" Type="nvarchar(max)" />
+          <Property Name="Ogrn" Type="nvarchar(max)" />
+          <Property Name="UrAdress" Type="nvarchar(max)" />
+          <Property Name="RealAdress" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="GoodsImages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ImageData" Type="varbinary(max)" />
+          <Property Name="ImageType" Type="nvarchar(max)" />
+          <Property Name="FileName" Type="nvarchar(max)" />
+          <Property Name="ImageSize" Type="int" Nullable="false" />
+          <Property Name="ProductOf_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="Menus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="ParentItem_Id" Type="int" />
+          <Property Name="HasChild" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MesureUnits">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ShortName" Type="nvarchar(max)" />
+          <Property Name="FullName" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NewsTime" Type="datetime" Nullable="false" />
+          <Property Name="Glyf" Type="varbinary(max)" />
+          <Property Name="ImageMimeType" Type="nvarchar(max)" />
+          <Property Name="Title" Type="nvarchar" MaxLength="130" Nullable="false" />
+          <Property Name="ShortDescr" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="FullNewsBody" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Source" Type="nvarchar(max)" />
+          <Property Name="Category" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Published" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Prices">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="Value" Type="float" Nullable="false" />
+          <Property Name="Currency_Id" Type="int" />
+          <Property Name="Product_Id" Type="int" />
+          <Property Name="PriceType" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProdMenuImages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AltText" Type="nvarchar(max)" />
+          <Property Name="Path" Type="nvarchar(max)" />
+          <Property Name="FullPath" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="ProductMenuItems">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="ProductMenu_Id" Type="int" />
+          <Property Name="Image_Id" Type="int" />
+          <Property Name="Descr" Type="nvarchar(max)" />
+          <Property Name="IsRus" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductMenus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="Image_Id" Type="int" />
+          <Property Name="Descr" Type="nvarchar(max)" />
+          <Property Name="Priority" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Articul" Type="nvarchar(max)" />
+          <Property Name="IsService" Type="bit" Nullable="false" />
+          <Property Name="Warranty" Type="nvarchar(max)" />
+          <Property Name="Brand_Id" Type="int" />
+          <Property Name="MesureUnit_Id" Type="int" />
+          <Property Name="Vendor_Id" Type="int" />
+          <Property Name="Categoy_Id" Type="int" />
+          <Property Name="MenuItem_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="Telephones">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="Numder" Type="nvarchar(max)" />
+          <Property Name="DetailsOf_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="UserPhotoes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PhotoData" Type="varbinary(max)" />
+          <Property Name="PhotoType" Type="nvarchar(max)" />
+          <Property Name="FileName" Type="nvarchar(max)" />
+          <Property Name="PhotoSise" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="EMail" Type="nvarchar(max)" />
+          <Property Name="Phone" Type="nvarchar(max)" />
+          <Property Name="Region" Type="nvarchar(max)" />
+          <Property Name="ConfirmEmail" Type="bit" Nullable="false" />
+          <Property Name="Block" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="Customer_Id" Type="int" />
+          <Property Name="UsrRoles_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="UsrRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Descr" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Vendors">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="Name" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK_dbo_Banks_dbo_Details_DetailsOf_Id">
+          <End Role="Details" Type="Self.Details" Multiplicity="0..1" />
+          <End Role="Banks" Type="Self.Banks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Details">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Banks">
+              <PropertyRef Name="DetailsOf_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Brands_dbo_Vendors_Vendor_Id">
+          <End Role="Vendors" Type="Self.Vendors" Multiplicity="0..1" />
+          <End Role="Brands" Type="Self.Brands" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendors">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Brands">
+              <PropertyRef Name="Vendor_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Customers_dbo_Details_Details_Id">
+          <End Role="Details" Type="Self.Details" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Details">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="Details_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Customers_dbo_UserPhotoes_Photo_Id">
+          <End Role="UserPhotoes" Type="Self.UserPhotoes" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserPhotoes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="Photo_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_GoodsImages_dbo_Products_ProductOf_Id">
+          <End Role="Products" Type="Self.Products" Multiplicity="0..1" />
+          <End Role="GoodsImages" Type="Self.GoodsImages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GoodsImages">
+              <PropertyRef Name="ProductOf_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Menus_dbo_Menus_ParentItem_Id">
+          <End Role="Menus" Type="Self.Menus" Multiplicity="0..1" />
+          <End Role="Menus1" Type="Self.Menus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menus">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Menus1">
+              <PropertyRef Name="ParentItem_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Prices_dbo_Currencies_Currency_Id">
+          <End Role="Currencies" Type="Self.Currencies" Multiplicity="0..1" />
+          <End Role="Prices" Type="Self.Prices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currencies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Prices">
+              <PropertyRef Name="Currency_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Prices_dbo_Products_Product_Id">
+          <End Role="Products" Type="Self.Products" Multiplicity="0..1" />
+          <End Role="Prices" Type="Self.Prices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Prices">
+              <PropertyRef Name="Product_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ProductMenuItems_dbo_ProdMenuImages_Image_Id">
+          <End Role="ProdMenuImages" Type="Self.ProdMenuImages" Multiplicity="0..1" />
+          <End Role="ProductMenuItems" Type="Self.ProductMenuItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProdMenuImages">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductMenuItems">
+              <PropertyRef Name="Image_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ProductMenuItems_dbo_ProductMenus_ProductMenu_Id">
+          <End Role="ProductMenus" Type="Self.ProductMenus" Multiplicity="0..1" />
+          <End Role="ProductMenuItems" Type="Self.ProductMenuItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductMenus">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductMenuItems">
+              <PropertyRef Name="ProductMenu_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ProductMenus_dbo_ProdMenuImages_Image_Id">
+          <End Role="ProdMenuImages" Type="Self.ProdMenuImages" Multiplicity="0..1" />
+          <End Role="ProductMenus" Type="Self.ProductMenus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProdMenuImages">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductMenus">
+              <PropertyRef Name="Image_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Products_dbo_Brands_Brand_Id">
+          <End Role="Brands" Type="Self.Brands" Multiplicity="0..1" />
+          <End Role="Products" Type="Self.Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brands">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="Brand_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Products_dbo_Menus_MenuItem_Id">
+          <End Role="Menus" Type="Self.Menus" Multiplicity="0..1" />
+          <End Role="Products" Type="Self.Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menus">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="MenuItem_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Products_dbo_MesureUnits_MesureUnit_Id">
+          <End Role="MesureUnits" Type="Self.MesureUnits" Multiplicity="0..1" />
+          <End Role="Products" Type="Self.Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MesureUnits">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="MesureUnit_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Products_dbo_ProductMenuItems_Categoy_Id">
+          <End Role="ProductMenuItems" Type="Self.ProductMenuItems" Multiplicity="0..1" />
+          <End Role="Products" Type="Self.Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductMenuItems">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="Categoy_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Products_dbo_Vendors_Vendor_Id">
+          <End Role="Vendors" Type="Self.Vendors" Multiplicity="0..1" />
+          <End Role="Products" Type="Self.Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendors">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="Vendor_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Telephones_dbo_Details_DetailsOf_Id">
+          <End Role="Details" Type="Self.Details" Multiplicity="0..1" />
+          <End Role="Telephones" Type="Self.Telephones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Details">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Telephones">
+              <PropertyRef Name="DetailsOf_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Users_dbo_Customers_Customer_Id">
+          <End Role="Customers" Type="Self.Customers" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="Customer_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Users_dbo_UsrRoles_UsrRoles_Id">
+          <End Role="UsrRoles" Type="Self.UsrRoles" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UsrRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="UsrRoles_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="iddataModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Banks" EntityType="Self.Banks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Brands" EntityType="Self.Brands" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Curencies" EntityType="Self.Curencies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Currencies" EntityType="Self.Currencies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Details" EntityType="Self.Details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GoodsImages" EntityType="Self.GoodsImages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Menus" EntityType="Self.Menus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MesureUnits" EntityType="Self.MesureUnits" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Prices" EntityType="Self.Prices" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProdMenuImages" EntityType="Self.ProdMenuImages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductMenuItems" EntityType="Self.ProductMenuItems" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductMenus" EntityType="Self.ProductMenus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Telephones" EntityType="Self.Telephones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserPhotoes" EntityType="Self.UserPhotoes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UsrRoles" EntityType="Self.UsrRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vendors" EntityType="Self.Vendors" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_Banks_dbo_Details_DetailsOf_Id" Association="Self.FK_dbo_Banks_dbo_Details_DetailsOf_Id">
+            <End Role="Details" EntitySet="Details" />
+            <End Role="Banks" EntitySet="Banks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Brands_dbo_Vendors_Vendor_Id" Association="Self.FK_dbo_Brands_dbo_Vendors_Vendor_Id">
+            <End Role="Vendors" EntitySet="Vendors" />
+            <End Role="Brands" EntitySet="Brands" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Customers_dbo_Details_Details_Id" Association="Self.FK_dbo_Customers_dbo_Details_Details_Id">
+            <End Role="Details" EntitySet="Details" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Customers_dbo_UserPhotoes_Photo_Id" Association="Self.FK_dbo_Customers_dbo_UserPhotoes_Photo_Id">
+            <End Role="UserPhotoes" EntitySet="UserPhotoes" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_GoodsImages_dbo_Products_ProductOf_Id" Association="Self.FK_dbo_GoodsImages_dbo_Products_ProductOf_Id">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="GoodsImages" EntitySet="GoodsImages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Menus_dbo_Menus_ParentItem_Id" Association="Self.FK_dbo_Menus_dbo_Menus_ParentItem_Id">
+            <End Role="Menus" EntitySet="Menus" />
+            <End Role="Menus1" EntitySet="Menus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Prices_dbo_Currencies_Currency_Id" Association="Self.FK_dbo_Prices_dbo_Currencies_Currency_Id">
+            <End Role="Currencies" EntitySet="Currencies" />
+            <End Role="Prices" EntitySet="Prices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Prices_dbo_Products_Product_Id" Association="Self.FK_dbo_Prices_dbo_Products_Product_Id">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="Prices" EntitySet="Prices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ProductMenuItems_dbo_ProdMenuImages_Image_Id" Association="Self.FK_dbo_ProductMenuItems_dbo_ProdMenuImages_Image_Id">
+            <End Role="ProdMenuImages" EntitySet="ProdMenuImages" />
+            <End Role="ProductMenuItems" EntitySet="ProductMenuItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ProductMenuItems_dbo_ProductMenus_ProductMenu_Id" Association="Self.FK_dbo_ProductMenuItems_dbo_ProductMenus_ProductMenu_Id">
+            <End Role="ProductMenus" EntitySet="ProductMenus" />
+            <End Role="ProductMenuItems" EntitySet="ProductMenuItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ProductMenus_dbo_ProdMenuImages_Image_Id" Association="Self.FK_dbo_ProductMenus_dbo_ProdMenuImages_Image_Id">
+            <End Role="ProdMenuImages" EntitySet="ProdMenuImages" />
+            <End Role="ProductMenus" EntitySet="ProductMenus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Products_dbo_Brands_Brand_Id" Association="Self.FK_dbo_Products_dbo_Brands_Brand_Id">
+            <End Role="Brands" EntitySet="Brands" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Products_dbo_Menus_MenuItem_Id" Association="Self.FK_dbo_Products_dbo_Menus_MenuItem_Id">
+            <End Role="Menus" EntitySet="Menus" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Products_dbo_MesureUnits_MesureUnit_Id" Association="Self.FK_dbo_Products_dbo_MesureUnits_MesureUnit_Id">
+            <End Role="MesureUnits" EntitySet="MesureUnits" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Products_dbo_ProductMenuItems_Categoy_Id" Association="Self.FK_dbo_Products_dbo_ProductMenuItems_Categoy_Id">
+            <End Role="ProductMenuItems" EntitySet="ProductMenuItems" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Products_dbo_Vendors_Vendor_Id" Association="Self.FK_dbo_Products_dbo_Vendors_Vendor_Id">
+            <End Role="Vendors" EntitySet="Vendors" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Telephones_dbo_Details_DetailsOf_Id" Association="Self.FK_dbo_Telephones_dbo_Details_DetailsOf_Id">
+            <End Role="Details" EntitySet="Details" />
+            <End Role="Telephones" EntitySet="Telephones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Users_dbo_Customers_Customer_Id" Association="Self.FK_dbo_Users_dbo_Customers_Customer_Id">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Users_dbo_UsrRoles_UsrRoles_Id" Association="Self.FK_dbo_Users_dbo_UsrRoles_UsrRoles_Id">
+            <End Role="UsrRoles" EntitySet="UsrRoles" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="iddataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Banks">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Korr" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Bik" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DetailsOf_Id" Type="Int32" />
+          <NavigationProperty Name="Details" Relationship="Self.FK_dbo_Banks_dbo_Details_DetailsOf_Id" FromRole="Banks" ToRole="Details" />
+        </EntityType>
+        <EntityType Name="Brands">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ShortName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FullName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Vendor_Id" Type="Int32" />
+          <NavigationProperty Name="Vendors" Relationship="Self.FK_dbo_Brands_dbo_Vendors_Vendor_Id" FromRole="Brands" ToRole="Vendors" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_dbo_Products_dbo_Brands_Brand_Id" FromRole="Brands" ToRole="Products" />
+        </EntityType>
+        <EntityType Name="Curencies">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReqDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Stitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CurValue" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Currencies">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="StringCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Prices" Relationship="Self.FK_dbo_Prices_dbo_Currencies_Currency_Id" FromRole="Currencies" ToRole="Prices" />
+        </EntityType>
+        <EntityType Name="Customers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Adress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Details_Id" Type="Int32" />
+          <Property Name="Photo_Id" Type="Int32" />
+          <NavigationProperty Name="Details" Relationship="Self.FK_dbo_Customers_dbo_Details_Details_Id" FromRole="Customers" ToRole="Details" />
+          <NavigationProperty Name="UserPhotoes" Relationship="Self.FK_dbo_Customers_dbo_UserPhotoes_Photo_Id" FromRole="Customers" ToRole="UserPhotoes" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_dbo_Users_dbo_Customers_Customer_Id" FromRole="Customers" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Details">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Inn" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Kpp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Ogrn" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UrAdress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RealAdress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Banks" Relationship="Self.FK_dbo_Banks_dbo_Details_DetailsOf_Id" FromRole="Details" ToRole="Banks" />
+          <NavigationProperty Name="Customers" Relationship="Self.FK_dbo_Customers_dbo_Details_Details_Id" FromRole="Details" ToRole="Customers" />
+          <NavigationProperty Name="Telephones" Relationship="Self.FK_dbo_Telephones_dbo_Details_DetailsOf_Id" FromRole="Details" ToRole="Telephones" />
+        </EntityType>
+        <EntityType Name="GoodsImages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ImageData" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ImageType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FileName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ImageSize" Type="Int32" Nullable="false" />
+          <Property Name="ProductOf_Id" Type="Int32" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_dbo_GoodsImages_dbo_Products_ProductOf_Id" FromRole="GoodsImages" ToRole="Products" />
+        </EntityType>
+        <EntityType Name="Menus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ParentItem_Id" Type="Int32" />
+          <Property Name="HasChild" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Menus1" Relationship="Self.FK_dbo_Menus_dbo_Menus_ParentItem_Id" FromRole="Menus" ToRole="Menus1" />
+          <NavigationProperty Name="Menus2" Relationship="Self.FK_dbo_Menus_dbo_Menus_ParentItem_Id" FromRole="Menus1" ToRole="Menus" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_dbo_Products_dbo_Menus_MenuItem_Id" FromRole="Menus" ToRole="Products" />
+        </EntityType>
+        <EntityType Name="MesureUnits">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ShortName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FullName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_dbo_Products_dbo_MesureUnits_MesureUnit_Id" FromRole="MesureUnits" ToRole="Products" />
+        </EntityType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NewsTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Glyf" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ImageMimeType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="130" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ShortDescr" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FullNewsBody" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Source" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Category" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Published" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Prices">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Value" Type="Double" Nullable="false" />
+          <Property Name="Currency_Id" Type="Int32" />
+          <Property Name="Product_Id" Type="Int32" />
+          <Property Name="PriceType" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Currencies" Relationship="Self.FK_dbo_Prices_dbo_Currencies_Currency_Id" FromRole="Prices" ToRole="Currencies" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_dbo_Prices_dbo_Products_Product_Id" FromRole="Prices" ToRole="Products" />
+        </EntityType>
+        <EntityType Name="ProdMenuImages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AltText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Path" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FullPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ProductMenuItems" Relationship="Self.FK_dbo_ProductMenuItems_dbo_ProdMenuImages_Image_Id" FromRole="ProdMenuImages" ToRole="ProductMenuItems" />
+          <NavigationProperty Name="ProductMenus" Relationship="Self.FK_dbo_ProductMenus_dbo_ProdMenuImages_Image_Id" FromRole="ProdMenuImages" ToRole="ProductMenus" />
+        </EntityType>
+        <EntityType Name="ProductMenuItems">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProductMenu_Id" Type="Int32" />
+          <Property Name="Image_Id" Type="Int32" />
+          <Property Name="Descr" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsRus" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ProdMenuImages" Relationship="Self.FK_dbo_ProductMenuItems_dbo_ProdMenuImages_Image_Id" FromRole="ProductMenuItems" ToRole="ProdMenuImages" />
+          <NavigationProperty Name="ProductMenus" Relationship="Self.FK_dbo_ProductMenuItems_dbo_ProductMenus_ProductMenu_Id" FromRole="ProductMenuItems" ToRole="ProductMenus" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_dbo_Products_dbo_ProductMenuItems_Categoy_Id" FromRole="ProductMenuItems" ToRole="Products" />
+        </EntityType>
+        <EntityType Name="ProductMenus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Image_Id" Type="Int32" />
+          <Property Name="Descr" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Priority" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ProdMenuImages" Relationship="Self.FK_dbo_ProductMenus_dbo_ProdMenuImages_Image_Id" FromRole="ProductMenus" ToRole="ProdMenuImages" />
+          <NavigationProperty Name="ProductMenuItems" Relationship="Self.FK_dbo_ProductMenuItems_dbo_ProductMenus_ProductMenu_Id" FromRole="ProductMenus" ToRole="ProductMenuItems" />
+        </EntityType>
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Articul" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsService" Type="Boolean" Nullable="false" />
+          <Property Name="Warranty" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Brand_Id" Type="Int32" />
+          <Property Name="MesureUnit_Id" Type="Int32" />
+          <Property Name="Vendor_Id" Type="Int32" />
+          <Property Name="Categoy_Id" Type="Int32" />
+          <Property Name="MenuItem_Id" Type="Int32" />
+          <NavigationProperty Name="Brands" Relationship="Self.FK_dbo_Products_dbo_Brands_Brand_Id" FromRole="Products" ToRole="Brands" />
+          <NavigationProperty Name="GoodsImages" Relationship="Self.FK_dbo_GoodsImages_dbo_Products_ProductOf_Id" FromRole="Products" ToRole="GoodsImages" />
+          <NavigationProperty Name="Menus" Relationship="Self.FK_dbo_Products_dbo_Menus_MenuItem_Id" FromRole="Products" ToRole="Menus" />
+          <NavigationProperty Name="MesureUnits" Relationship="Self.FK_dbo_Products_dbo_MesureUnits_MesureUnit_Id" FromRole="Products" ToRole="MesureUnits" />
+          <NavigationProperty Name="Prices" Relationship="Self.FK_dbo_Prices_dbo_Products_Product_Id" FromRole="Products" ToRole="Prices" />
+          <NavigationProperty Name="ProductMenuItems" Relationship="Self.FK_dbo_Products_dbo_ProductMenuItems_Categoy_Id" FromRole="Products" ToRole="ProductMenuItems" />
+          <NavigationProperty Name="Vendors" Relationship="Self.FK_dbo_Products_dbo_Vendors_Vendor_Id" FromRole="Products" ToRole="Vendors" />
+        </EntityType>
+        <EntityType Name="Telephones">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Numder" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DetailsOf_Id" Type="Int32" />
+          <NavigationProperty Name="Details" Relationship="Self.FK_dbo_Telephones_dbo_Details_DetailsOf_Id" FromRole="Telephones" ToRole="Details" />
+        </EntityType>
+        <EntityType Name="UserPhotoes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PhotoData" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="PhotoType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FileName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhotoSise" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Customers" Relationship="Self.FK_dbo_Customers_dbo_UserPhotoes_Photo_Id" FromRole="UserPhotoes" ToRole="Customers" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EMail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Region" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ConfirmEmail" Type="Boolean" Nullable="false" />
+          <Property Name="Block" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Customer_Id" Type="Int32" />
+          <Property Name="UsrRoles_Id" Type="Int32" />
+          <NavigationProperty Name="Customers" Relationship="Self.FK_dbo_Users_dbo_Customers_Customer_Id" FromRole="Users" ToRole="Customers" />
+          <NavigationProperty Name="UsrRoles" Relationship="Self.FK_dbo_Users_dbo_UsrRoles_UsrRoles_Id" FromRole="Users" ToRole="UsrRoles" />
+        </EntityType>
+        <EntityType Name="UsrRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Descr" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_dbo_Users_dbo_UsrRoles_UsrRoles_Id" FromRole="UsrRoles" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Vendors">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Brands" Relationship="Self.FK_dbo_Brands_dbo_Vendors_Vendor_Id" FromRole="Vendors" ToRole="Brands" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_dbo_Products_dbo_Vendors_Vendor_Id" FromRole="Vendors" ToRole="Products" />
+        </EntityType>
+        <Association Name="FK_dbo_Banks_dbo_Details_DetailsOf_Id">
+          <End Role="Details" Type="Self.Details" Multiplicity="0..1" />
+          <End Role="Banks" Type="Self.Banks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Details">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Banks">
+              <PropertyRef Name="DetailsOf_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Brands_dbo_Vendors_Vendor_Id">
+          <End Role="Vendors" Type="Self.Vendors" Multiplicity="0..1" />
+          <End Role="Brands" Type="Self.Brands" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendors">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Brands">
+              <PropertyRef Name="Vendor_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Products_dbo_Brands_Brand_Id">
+          <End Role="Brands" Type="Self.Brands" Multiplicity="0..1" />
+          <End Role="Products" Type="Self.Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brands">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="Brand_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Prices_dbo_Currencies_Currency_Id">
+          <End Role="Currencies" Type="Self.Currencies" Multiplicity="0..1" />
+          <End Role="Prices" Type="Self.Prices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currencies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Prices">
+              <PropertyRef Name="Currency_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Customers_dbo_Details_Details_Id">
+          <End Role="Details" Type="Self.Details" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Details">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="Details_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Customers_dbo_UserPhotoes_Photo_Id">
+          <End Role="UserPhotoes" Type="Self.UserPhotoes" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserPhotoes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="Photo_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Users_dbo_Customers_Customer_Id">
+          <End Role="Customers" Type="Self.Customers" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="Customer_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Telephones_dbo_Details_DetailsOf_Id">
+          <End Role="Details" Type="Self.Details" Multiplicity="0..1" />
+          <End Role="Telephones" Type="Self.Telephones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Details">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Telephones">
+              <PropertyRef Name="DetailsOf_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_GoodsImages_dbo_Products_ProductOf_Id">
+          <End Role="Products" Type="Self.Products" Multiplicity="0..1" />
+          <End Role="GoodsImages" Type="Self.GoodsImages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GoodsImages">
+              <PropertyRef Name="ProductOf_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Menus_dbo_Menus_ParentItem_Id">
+          <End Role="Menus" Type="Self.Menus" Multiplicity="0..1" />
+          <End Role="Menus1" Type="Self.Menus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menus">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Menus1">
+              <PropertyRef Name="ParentItem_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Products_dbo_Menus_MenuItem_Id">
+          <End Role="Menus" Type="Self.Menus" Multiplicity="0..1" />
+          <End Role="Products" Type="Self.Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menus">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="MenuItem_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Products_dbo_MesureUnits_MesureUnit_Id">
+          <End Role="MesureUnits" Type="Self.MesureUnits" Multiplicity="0..1" />
+          <End Role="Products" Type="Self.Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MesureUnits">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="MesureUnit_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Prices_dbo_Products_Product_Id">
+          <End Role="Products" Type="Self.Products" Multiplicity="0..1" />
+          <End Role="Prices" Type="Self.Prices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Prices">
+              <PropertyRef Name="Product_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ProductMenuItems_dbo_ProdMenuImages_Image_Id">
+          <End Role="ProdMenuImages" Type="Self.ProdMenuImages" Multiplicity="0..1" />
+          <End Role="ProductMenuItems" Type="Self.ProductMenuItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProdMenuImages">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductMenuItems">
+              <PropertyRef Name="Image_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ProductMenus_dbo_ProdMenuImages_Image_Id">
+          <End Role="ProdMenuImages" Type="Self.ProdMenuImages" Multiplicity="0..1" />
+          <End Role="ProductMenus" Type="Self.ProductMenus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProdMenuImages">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductMenus">
+              <PropertyRef Name="Image_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ProductMenuItems_dbo_ProductMenus_ProductMenu_Id">
+          <End Role="ProductMenus" Type="Self.ProductMenus" Multiplicity="0..1" />
+          <End Role="ProductMenuItems" Type="Self.ProductMenuItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductMenus">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductMenuItems">
+              <PropertyRef Name="ProductMenu_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Products_dbo_ProductMenuItems_Categoy_Id">
+          <End Role="ProductMenuItems" Type="Self.ProductMenuItems" Multiplicity="0..1" />
+          <End Role="Products" Type="Self.Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductMenuItems">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="Categoy_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Products_dbo_Vendors_Vendor_Id">
+          <End Role="Vendors" Type="Self.Vendors" Multiplicity="0..1" />
+          <End Role="Products" Type="Self.Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendors">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="Vendor_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Users_dbo_UsrRoles_UsrRoles_Id">
+          <End Role="UsrRoles" Type="Self.UsrRoles" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UsrRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="UsrRoles_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="iddata" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+          <EntitySet Name="Banks" EntityType="Self.Banks" />
+          <EntitySet Name="Brands" EntityType="Self.Brands" />
+          <EntitySet Name="Curencies" EntityType="Self.Curencies" />
+          <EntitySet Name="Currencies" EntityType="Self.Currencies" />
+          <EntitySet Name="Customers" EntityType="Self.Customers" />
+          <EntitySet Name="Details" EntityType="Self.Details" />
+          <EntitySet Name="GoodsImages" EntityType="Self.GoodsImages" />
+          <EntitySet Name="Menus" EntityType="Self.Menus" />
+          <EntitySet Name="MesureUnits" EntityType="Self.MesureUnits" />
+          <EntitySet Name="News" EntityType="Self.News" />
+          <EntitySet Name="Prices" EntityType="Self.Prices" />
+          <EntitySet Name="ProdMenuImages" EntityType="Self.ProdMenuImages" />
+          <EntitySet Name="ProductMenuItems" EntityType="Self.ProductMenuItems" />
+          <EntitySet Name="ProductMenus" EntityType="Self.ProductMenus" />
+          <EntitySet Name="Products" EntityType="Self.Products" />
+          <EntitySet Name="Telephones" EntityType="Self.Telephones" />
+          <EntitySet Name="UserPhotoes" EntityType="Self.UserPhotoes" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <EntitySet Name="UsrRoles" EntityType="Self.UsrRoles" />
+          <EntitySet Name="Vendors" EntityType="Self.Vendors" />
+          <AssociationSet Name="FK_dbo_Banks_dbo_Details_DetailsOf_Id" Association="Self.FK_dbo_Banks_dbo_Details_DetailsOf_Id">
+            <End Role="Details" EntitySet="Details" />
+            <End Role="Banks" EntitySet="Banks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Brands_dbo_Vendors_Vendor_Id" Association="Self.FK_dbo_Brands_dbo_Vendors_Vendor_Id">
+            <End Role="Vendors" EntitySet="Vendors" />
+            <End Role="Brands" EntitySet="Brands" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Products_dbo_Brands_Brand_Id" Association="Self.FK_dbo_Products_dbo_Brands_Brand_Id">
+            <End Role="Brands" EntitySet="Brands" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Prices_dbo_Currencies_Currency_Id" Association="Self.FK_dbo_Prices_dbo_Currencies_Currency_Id">
+            <End Role="Currencies" EntitySet="Currencies" />
+            <End Role="Prices" EntitySet="Prices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Customers_dbo_Details_Details_Id" Association="Self.FK_dbo_Customers_dbo_Details_Details_Id">
+            <End Role="Details" EntitySet="Details" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Customers_dbo_UserPhotoes_Photo_Id" Association="Self.FK_dbo_Customers_dbo_UserPhotoes_Photo_Id">
+            <End Role="UserPhotoes" EntitySet="UserPhotoes" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Users_dbo_Customers_Customer_Id" Association="Self.FK_dbo_Users_dbo_Customers_Customer_Id">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Telephones_dbo_Details_DetailsOf_Id" Association="Self.FK_dbo_Telephones_dbo_Details_DetailsOf_Id">
+            <End Role="Details" EntitySet="Details" />
+            <End Role="Telephones" EntitySet="Telephones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_GoodsImages_dbo_Products_ProductOf_Id" Association="Self.FK_dbo_GoodsImages_dbo_Products_ProductOf_Id">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="GoodsImages" EntitySet="GoodsImages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Menus_dbo_Menus_ParentItem_Id" Association="Self.FK_dbo_Menus_dbo_Menus_ParentItem_Id">
+            <End Role="Menus" EntitySet="Menus" />
+            <End Role="Menus1" EntitySet="Menus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Products_dbo_Menus_MenuItem_Id" Association="Self.FK_dbo_Products_dbo_Menus_MenuItem_Id">
+            <End Role="Menus" EntitySet="Menus" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Products_dbo_MesureUnits_MesureUnit_Id" Association="Self.FK_dbo_Products_dbo_MesureUnits_MesureUnit_Id">
+            <End Role="MesureUnits" EntitySet="MesureUnits" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Prices_dbo_Products_Product_Id" Association="Self.FK_dbo_Prices_dbo_Products_Product_Id">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="Prices" EntitySet="Prices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ProductMenuItems_dbo_ProdMenuImages_Image_Id" Association="Self.FK_dbo_ProductMenuItems_dbo_ProdMenuImages_Image_Id">
+            <End Role="ProdMenuImages" EntitySet="ProdMenuImages" />
+            <End Role="ProductMenuItems" EntitySet="ProductMenuItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ProductMenus_dbo_ProdMenuImages_Image_Id" Association="Self.FK_dbo_ProductMenus_dbo_ProdMenuImages_Image_Id">
+            <End Role="ProdMenuImages" EntitySet="ProdMenuImages" />
+            <End Role="ProductMenus" EntitySet="ProductMenus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ProductMenuItems_dbo_ProductMenus_ProductMenu_Id" Association="Self.FK_dbo_ProductMenuItems_dbo_ProductMenus_ProductMenu_Id">
+            <End Role="ProductMenus" EntitySet="ProductMenus" />
+            <End Role="ProductMenuItems" EntitySet="ProductMenuItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Products_dbo_ProductMenuItems_Categoy_Id" Association="Self.FK_dbo_Products_dbo_ProductMenuItems_Categoy_Id">
+            <End Role="ProductMenuItems" EntitySet="ProductMenuItems" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Products_dbo_Vendors_Vendor_Id" Association="Self.FK_dbo_Products_dbo_Vendors_Vendor_Id">
+            <End Role="Vendors" EntitySet="Vendors" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Users_dbo_UsrRoles_UsrRoles_Id" Association="Self.FK_dbo_Users_dbo_UsrRoles_UsrRoles_Id">
+            <End Role="UsrRoles" EntitySet="UsrRoles" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="iddataModelStoreContainer" CdmEntityContainer="iddata">
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="iddataModel.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Banks">
+            <EntityTypeMapping TypeName="iddataModel.Banks">
+              <MappingFragment StoreEntitySet="Banks">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Korr" ColumnName="Korr" />
+                <ScalarProperty Name="Bik" ColumnName="Bik" />
+                <ScalarProperty Name="DetailsOf_Id" ColumnName="DetailsOf_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Brands">
+            <EntityTypeMapping TypeName="iddataModel.Brands">
+              <MappingFragment StoreEntitySet="Brands">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Vendor_Id" ColumnName="Vendor_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Curencies">
+            <EntityTypeMapping TypeName="iddataModel.Curencies">
+              <MappingFragment StoreEntitySet="Curencies">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ReqDate" ColumnName="ReqDate" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Stitle" ColumnName="Stitle" />
+                <ScalarProperty Name="CurValue" ColumnName="CurValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Currencies">
+            <EntityTypeMapping TypeName="iddataModel.Currencies">
+              <MappingFragment StoreEntitySet="Currencies">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="StringCode" ColumnName="StringCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="iddataModel.Customers">
+              <MappingFragment StoreEntitySet="Customers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+                <ScalarProperty Name="Details_Id" ColumnName="Details_Id" />
+                <ScalarProperty Name="Photo_Id" ColumnName="Photo_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Details">
+            <EntityTypeMapping TypeName="iddataModel.Details">
+              <MappingFragment StoreEntitySet="Details">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Inn" ColumnName="Inn" />
+                <ScalarProperty Name="Kpp" ColumnName="Kpp" />
+                <ScalarProperty Name="Ogrn" ColumnName="Ogrn" />
+                <ScalarProperty Name="UrAdress" ColumnName="UrAdress" />
+                <ScalarProperty Name="RealAdress" ColumnName="RealAdress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GoodsImages">
+            <EntityTypeMapping TypeName="iddataModel.GoodsImages">
+              <MappingFragment StoreEntitySet="GoodsImages">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ImageData" ColumnName="ImageData" />
+                <ScalarProperty Name="ImageType" ColumnName="ImageType" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="ImageSize" ColumnName="ImageSize" />
+                <ScalarProperty Name="ProductOf_Id" ColumnName="ProductOf_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Menus">
+            <EntityTypeMapping TypeName="iddataModel.Menus">
+              <MappingFragment StoreEntitySet="Menus">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ParentItem_Id" ColumnName="ParentItem_Id" />
+                <ScalarProperty Name="HasChild" ColumnName="HasChild" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MesureUnits">
+            <EntityTypeMapping TypeName="iddataModel.MesureUnits">
+              <MappingFragment StoreEntitySet="MesureUnits">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="News">
+            <EntityTypeMapping TypeName="iddataModel.News">
+              <MappingFragment StoreEntitySet="News">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="NewsTime" ColumnName="NewsTime" />
+                <ScalarProperty Name="Glyf" ColumnName="Glyf" />
+                <ScalarProperty Name="ImageMimeType" ColumnName="ImageMimeType" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ShortDescr" ColumnName="ShortDescr" />
+                <ScalarProperty Name="FullNewsBody" ColumnName="FullNewsBody" />
+                <ScalarProperty Name="Source" ColumnName="Source" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Published" ColumnName="Published" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Prices">
+            <EntityTypeMapping TypeName="iddataModel.Prices">
+              <MappingFragment StoreEntitySet="Prices">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Currency_Id" ColumnName="Currency_Id" />
+                <ScalarProperty Name="Product_Id" ColumnName="Product_Id" />
+                <ScalarProperty Name="PriceType" ColumnName="PriceType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProdMenuImages">
+            <EntityTypeMapping TypeName="iddataModel.ProdMenuImages">
+              <MappingFragment StoreEntitySet="ProdMenuImages">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AltText" ColumnName="AltText" />
+                <ScalarProperty Name="Path" ColumnName="Path" />
+                <ScalarProperty Name="FullPath" ColumnName="FullPath" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductMenuItems">
+            <EntityTypeMapping TypeName="iddataModel.ProductMenuItems">
+              <MappingFragment StoreEntitySet="ProductMenuItems">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ProductMenu_Id" ColumnName="ProductMenu_Id" />
+                <ScalarProperty Name="Image_Id" ColumnName="Image_Id" />
+                <ScalarProperty Name="Descr" ColumnName="Descr" />
+                <ScalarProperty Name="IsRus" ColumnName="IsRus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductMenus">
+            <EntityTypeMapping TypeName="iddataModel.ProductMenus">
+              <MappingFragment StoreEntitySet="ProductMenus">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Image_Id" ColumnName="Image_Id" />
+                <ScalarProperty Name="Descr" ColumnName="Descr" />
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="iddataModel.Products">
+              <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Articul" ColumnName="Articul" />
+                <ScalarProperty Name="IsService" ColumnName="IsService" />
+                <ScalarProperty Name="Warranty" ColumnName="Warranty" />
+                <ScalarProperty Name="Brand_Id" ColumnName="Brand_Id" />
+                <ScalarProperty Name="MesureUnit_Id" ColumnName="MesureUnit_Id" />
+                <ScalarProperty Name="Vendor_Id" ColumnName="Vendor_Id" />
+                <ScalarProperty Name="Categoy_Id" ColumnName="Categoy_Id" />
+                <ScalarProperty Name="MenuItem_Id" ColumnName="MenuItem_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Telephones">
+            <EntityTypeMapping TypeName="iddataModel.Telephones">
+              <MappingFragment StoreEntitySet="Telephones">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Numder" ColumnName="Numder" />
+                <ScalarProperty Name="DetailsOf_Id" ColumnName="DetailsOf_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserPhotoes">
+            <EntityTypeMapping TypeName="iddataModel.UserPhotoes">
+              <MappingFragment StoreEntitySet="UserPhotoes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PhotoData" ColumnName="PhotoData" />
+                <ScalarProperty Name="PhotoType" ColumnName="PhotoType" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="PhotoSise" ColumnName="PhotoSise" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="iddataModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="EMail" ColumnName="EMail" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="ConfirmEmail" ColumnName="ConfirmEmail" />
+                <ScalarProperty Name="Block" ColumnName="Block" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="Customer_Id" ColumnName="Customer_Id" />
+                <ScalarProperty Name="UsrRoles_Id" ColumnName="UsrRoles_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsrRoles">
+            <EntityTypeMapping TypeName="iddataModel.UsrRoles">
+              <MappingFragment StoreEntitySet="UsrRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Descr" ColumnName="Descr" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vendors">
+            <EntityTypeMapping TypeName="iddataModel.Vendors">
+              <MappingFragment StoreEntitySet="Vendors">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

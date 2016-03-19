@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="05c0ea59089e43aebcbcffa41da2a5be" Name="Diagram1">
+        <EntityTypeShape EntityType="iddataModel.C__MigrationHistory" Width="1.5" PointX="5.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="iddataModel.Banks" Width="1.5" PointX="8" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="iddataModel.Brands" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="iddataModel.Curencies" Width="1.5" PointX="12.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="iddataModel.Currencies" Width="1.5" PointX="8.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="iddataModel.Customers" Width="1.5" PointX="11" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="iddataModel.Details" Width="1.5" PointX="5.75" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="iddataModel.GoodsImages" Width="1.5" PointX="7.5" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="iddataModel.Menus" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="iddataModel.MesureUnits" Width="1.5" PointX="3" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="iddataModel.News" Width="1.5" PointX="12.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="iddataModel.Prices" Width="1.5" PointX="10.5" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="iddataModel.ProdMenuImages" Width="1.5" PointX="0.75" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="iddataModel.ProductMenuItems" Width="1.5" PointX="3" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="iddataModel.ProductMenus" Width="1.5" PointX="0.75" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="iddataModel.Products" Width="1.5" PointX="5.25" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="iddataModel.Telephones" Width="1.5" PointX="8" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="iddataModel.UserPhotoes" Width="1.5" PointX="8.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="iddataModel.Users" Width="1.5" PointX="13.25" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="iddataModel.UsrRoles" Width="1.5" PointX="11" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="iddataModel.Vendors" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <AssociationConnector Association="iddataModel.FK_dbo_Banks_dbo_Details_DetailsOf_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="iddataModel.FK_dbo_Brands_dbo_Vendors_Vendor_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="iddataModel.FK_dbo_Products_dbo_Brands_Brand_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="iddataModel.FK_dbo_Prices_dbo_Currencies_Currency_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="iddataModel.FK_dbo_Customers_dbo_Details_Details_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="iddataModel.FK_dbo_Customers_dbo_UserPhotoes_Photo_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="iddataModel.FK_dbo_Users_dbo_Customers_Customer_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="iddataModel.FK_dbo_Telephones_dbo_Details_DetailsOf_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="iddataModel.FK_dbo_GoodsImages_dbo_Products_ProductOf_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="iddataModel.FK_dbo_Menus_dbo_Menus_ParentItem_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="iddataModel.FK_dbo_Products_dbo_Menus_MenuItem_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="iddataModel.FK_dbo_Products_dbo_MesureUnits_MesureUnit_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="iddataModel.FK_dbo_Prices_dbo_Products_Product_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="iddataModel.FK_dbo_ProductMenuItems_dbo_ProdMenuImages_Image_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="iddataModel.FK_dbo_ProductMenus_dbo_ProdMenuImages_Image_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="iddataModel.FK_dbo_ProductMenuItems_dbo_ProductMenus_ProductMenu_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="iddataModel.FK_dbo_Products_dbo_ProductMenuItems_Categoy_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="iddataModel.FK_dbo_Products_dbo_Vendors_Vendor_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="iddataModel.FK_dbo_Users_dbo_UsrRoles_UsrRoles_Id" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
