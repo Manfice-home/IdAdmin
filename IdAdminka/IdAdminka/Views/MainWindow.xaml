@@ -7,8 +7,12 @@
         xmlns:viewModels="clr-namespace:IdAdminka.ViewModels"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance viewModels:CustomerViewModel}"
-        Title="Ай-Ди админка www.id-racks.ru" WindowStartupLocation="CenterScreen" Icon="../Content/Images/favicon.png">
+        Title="Ай-Ди админка www.id-racks.ru" WindowStartupLocation="CenterScreen" Icon="../Content/Images/favicon.png" 
+        ShowInTaskbar="True" WindowState="Maximized" Background="CornflowerBlue">
     <Grid>
-        <TextBox Margin="50" Text="{Binding CustomerName, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
     </Grid>
 </Window>
