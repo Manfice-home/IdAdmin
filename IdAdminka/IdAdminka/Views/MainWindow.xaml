@@ -4,9 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:IdAdminka"
+        xmlns:viewModels="clr-namespace:IdAdminka.ViewModels"
         mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance viewModels:CustomerViewModel}"
         Title="Ай-Ди админка www.id-racks.ru" WindowStartupLocation="CenterScreen" Icon="../Content/Images/favicon.png">
     <Grid>
-        
+        <TextBox Margin="50" Text="{Binding CustomerName, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"></TextBox>
     </Grid>
 </Window>
