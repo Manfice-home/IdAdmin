@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdAdminka", "IdAdminka\IdAd
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Id.domen", "Id.domen\Id.domen.csproj", "{F09D226A-BE19-490F-998E-9284E4BBEFF8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "id.test", "id.test\id.test.csproj", "{CFB3F37D-7AC6-4E1B-93E0-560212CF9D6C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{F09D226A-BE19-490F-998E-9284E4BBEFF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F09D226A-BE19-490F-998E-9284E4BBEFF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F09D226A-BE19-490F-998E-9284E4BBEFF8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFB3F37D-7AC6-4E1B-93E0-560212CF9D6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFB3F37D-7AC6-4E1B-93E0-560212CF9D6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFB3F37D-7AC6-4E1B-93E0-560212CF9D6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFB3F37D-7AC6-4E1B-93E0-560212CF9D6C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

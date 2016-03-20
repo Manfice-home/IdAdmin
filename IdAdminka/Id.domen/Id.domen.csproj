@@ -99,6 +99,7 @@
     <Compile Include="News.cs">
       <DependentUpon>iddb.tt</DependentUpon>
     </Compile>
+    <Compile Include="ObservableObject.cs" />
     <Compile Include="Prices.cs">
       <DependentUpon>iddb.tt</DependentUpon>
     </Compile>
